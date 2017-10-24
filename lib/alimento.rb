@@ -1,5 +1,5 @@
 require "alimento/version"
 
-module Alimento
-  # Your code goes here...
+class Alimento
+
 end
