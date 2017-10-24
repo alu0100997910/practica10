@@ -2,7 +2,7 @@ require 'lib/alimento'
 
 describe Alimento do
     before :each do
-        @alimento=Alimento.new("Huevo Frito",14.1,0)
+        @alimento=Alimento.new("Huevo Frito",14.1,0,19.5)
     end
     
     describe "# Creacion del Alimento" do
@@ -14,6 +14,9 @@ describe Alimento do
         end
         it "Se almacena correctamente los glúcidos del alimento en gramos" do
             expect(@alimento.glucidos).to eq(0)
+        end
+        it "Se almacena correctamente las grasas del alimento en gramos" do
+            expect(@alimento.lipidos).to eq(19.5)
         end
     end
 
