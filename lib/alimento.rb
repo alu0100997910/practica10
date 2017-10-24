@@ -6,4 +6,8 @@ class Alimento
         @glucidos=g
         @lipidos=l
     end
+
+    def to_s
+        cadena = "Name: #{@nombre} --> [Proteins , Glucids , Lipids]: [#{@proteinas} , #{@glucidos} , #{@lipidos}]"
+    end
 end
