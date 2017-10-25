@@ -22,8 +22,9 @@ describe Alimento do
     describe "# Prueba Métodos de Alimento" do
         it "Test del método to_s" do
             expect(@alimento.to_s).to eq("Name: #{@alimento.nombre} --> [Proteins , Glucids , Lipids]: [#{@alimento.proteinas} , #{@alimento.glucidos} , #{@alimento.lipidos}]")
-            
+        end
+        it "Test del método valor energético" do
+            expect(@alimento.energeticValue).to eq(231.9)
         end
     end
-
 end
