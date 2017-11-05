@@ -16,5 +16,9 @@ module Alimento
             cadena = "Name: #{@nombre} --> [Proteins , Glucids , Lipids]: [#{@proteinas} , #{@glucidos} , #{@lipidos}]"
         end
     end
+
+    class Lista
+
+    end
 end
   
