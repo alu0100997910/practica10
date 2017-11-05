@@ -1,8 +1,13 @@
-require 'lib/alimento'
+require "spec_helper"
 
-describe Alimento do
+RSpec.describe Alimento do
+  it "has a version number" do
+    expect(Alimento::VERSION).not_to be nil
+  end
+
+  describe "# Pruebas" do
     before :each do
-        @alimento=Alimento.new("Huevo Frito",14.1,0,19.5)
+        @alimento=Alimento::Alimento.new("Huevo Frito",14.1,0,19.5)
     end
     
     describe "# Creacion del Alimento" do
@@ -27,4 +32,5 @@ describe Alimento do
             expect(@alimento.energeticValue).to eq(231.9)
         end
     end
+  end
 end

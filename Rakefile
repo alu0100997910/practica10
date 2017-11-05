@@ -1,7 +1,6 @@
 require "bundler/gem_tasks"
-task :default => :spec
+require "rspec/core/rake_task"
 
-desc "Ejecutar las espectativas de la clase Alimento"
-task :spec do
-    sh "rspec -I. spec/alimento_spec.rb"
-end
+RSpec::Core::RakeTask.new(:spec)
+
+task :default => :spec
