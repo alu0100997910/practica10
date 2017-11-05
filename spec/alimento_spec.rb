@@ -5,7 +5,7 @@ RSpec.describe Alimento do
     expect(Alimento::VERSION).not_to be nil
   end
 
-  describe "# Pruebas" do
+  describe "# Pruebas de la Clase Alimento" do
     before :each do
         @alimento=Alimento::Alimento.new("Huevo Frito",14.1,0,19.5)
     end
@@ -31,6 +31,16 @@ RSpec.describe Alimento do
         it "Test del método valor energético" do
             expect(@alimento.energeticValue).to eq(231.9)
         end
+    end
+  end
+
+  describe "# Pruebas de la Clase Lista" do
+    before :all do
+        @lista=Alimento::Lista.new
+    end
+
+    it "# Creacion del Objeto Lista" do
+        expect(@lista).not_to be(nil)
     end
   end
 end
