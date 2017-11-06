@@ -42,5 +42,12 @@ RSpec.describe Alimento do
     it "# Creacion del Objeto Lista con un objeto" do
         expect(@lista).not_to be(nil)
     end
+
+    describe "# Metodos de la clase Lista" do
+        it "# Push" do
+            object = 9
+            expect(@lista.push(object).value).to eq(9)
+        end
+    end
   end
 end
