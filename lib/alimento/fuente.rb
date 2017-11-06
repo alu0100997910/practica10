@@ -18,7 +18,12 @@ module Alimento
     end
 
     class Lista
+        Node = Struct.new(:value, :next, :prev)
 
+        def initialize(val)
+            @head=Node.new(val,nil,nil)
+            @tail=Node.new(val,nil,nil)
+        end
     end
 end
   

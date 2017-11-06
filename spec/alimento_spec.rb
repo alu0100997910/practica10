@@ -36,10 +36,10 @@ RSpec.describe Alimento do
 
   describe "# Pruebas de la Clase Lista" do
     before :all do
-        @lista=Alimento::Lista.new
+        @lista=Alimento::Lista.new(5)
     end
 
-    it "# Creacion del Objeto Lista" do
+    it "# Creacion del Objeto Lista con un objeto" do
         expect(@lista).not_to be(nil)
     end
   end
