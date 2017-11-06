@@ -27,9 +27,18 @@ module Alimento
         end
 
         def push(val)
-            aux=Node.new(@tail, val, nil)
-            @tail.next=aux
-            @tail=aux
+            if val.instance_of?Array
+                val.each do |i|
+                    aux=Node.new(@tail, i, nil)
+                    @tail.next=aux
+                    @tail=aux
+                end
+            else
+                aux=Node.new(@tail, val, nil)
+                @tail.next=aux
+                @tail=aux
+            end
+            @tail
         end
     end
 end

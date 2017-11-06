@@ -44,9 +44,13 @@ RSpec.describe Alimento do
     end
 
     describe "# Metodos de la clase Lista" do
-        it "# Push" do
+        it "# Push 1 objeto" do
             object = 9
             expect(@lista.push(object).value).to eq(9)
+        end
+        it "# Push 2+ Objects" do
+            array=[2,3,4]
+            expect(@lista.push(array).value).to eq(4)
         end
     end
   end
