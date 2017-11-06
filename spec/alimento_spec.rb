@@ -52,6 +52,10 @@ RSpec.describe Alimento do
             array=[2,3,4]
             expect(@lista.push(array).value).to eq(4)
         end
+
+        it "# Pop_front" do
+            expect(@lista.pop_front.value).to eq(9)
+        end
     end
   end
 end

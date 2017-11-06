@@ -40,6 +40,13 @@ module Alimento
             end
             @tail
         end
+        def pop_front
+            @head=@head.next
+            @head.prev.next=nil
+            @head.prev=nil
+            @head
+
+        end
     end
 end
   
