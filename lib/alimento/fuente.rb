@@ -53,6 +53,20 @@ module Alimento
             @tail.next=nil
             @tail
         end
+
+        def to_s
+            current=@head
+            sout="[ "
+            while current!=nil
+                if current.next==nil
+                    sout+=current.value.to_s + " "
+                else
+                    sout+=current.value.to_s + ", "
+                end
+                current=current.next
+            end
+            sout+="]"
+        end
     end
 end
   

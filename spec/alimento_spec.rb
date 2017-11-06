@@ -60,6 +60,11 @@ RSpec.describe Alimento do
         it "# Pop_back" do
             expect(@lista.pop_back.value).to eq(3)
         end
+
+        it "# to_s" do
+            expect(@lista.to_s).to eq("[ 9, 2, 3 ]")
+        end
+       
     end
   end
 end
