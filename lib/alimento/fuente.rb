@@ -45,7 +45,13 @@ module Alimento
             @head.prev.next=nil
             @head.prev=nil
             @head
+        end
 
+        def pop_back
+            @tail=@tail.prev
+            @tail.next.prev=nil
+            @tail.next=nil
+            @tail
         end
     end
 end

@@ -56,6 +56,10 @@ RSpec.describe Alimento do
         it "# Pop_front" do
             expect(@lista.pop_front.value).to eq(9)
         end
+
+        it "# Pop_back" do
+            expect(@lista.pop_back.value).to eq(3)
+        end
     end
   end
 end
