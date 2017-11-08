@@ -37,6 +37,13 @@ module Alimento
             @categoria="Pescados y Maricos"
         end
     end
+
+    class Grasos < Alimento
+        def initialize(name,p,g,l)
+            super(name,p,g,l)
+            @categoria="Alimentos Grasos"
+        end
+    end
 end
 
 module Lista

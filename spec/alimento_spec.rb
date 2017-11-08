@@ -104,6 +104,19 @@ RSpec.describe Alimento::Pescados do
     end
 end
 
+RSpec.describe Alimento::Grasos do
+    before :all do
+        @aceiteoliva=Alimento::Grasos.new("aceite oliva", 0,0.2,99.6)
+        @mantequilla=Alimento::Grasos.new("mantequilla", 0.7,0,83.2)
+        @chocolate=Alimento::Grasos.new("chocolate", 5.3,47.0,30.0)
+    end
+    it "# Clase de un objeto" do
+        expect(@aceiteoliva.class).to eq(Alimento::Grasos)
+        expect(@mantequilla.class).to eq(Alimento::Grasos)
+        expect(@chocolate.class).to eq(Alimento::Grasos)
+    end
+end
+
 RSpec.describe Lista::Lista do
     describe "# Pruebas de la Clase Lista" do
         before :all do
