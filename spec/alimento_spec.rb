@@ -170,7 +170,11 @@ RSpec.describe Alimento::Verduras do
         expect(@cebolla.instance_of?Alimento::Verduras).to eq(true)
         expect(@calabaza.instance_of?Alimento::Verduras).to eq(true)
     end
-    
+    it "# Pertenencia a una Jerarquia" do
+        expect(@tomate.kind_of?Alimento::Verduras).to eq(true)
+        expect(@cebolla.kind_of?Alimento::Verduras).to eq(true)
+        expect(@calabaza.kind_of?Alimento::Verduras).to eq(true)
+    end
 end
 
 RSpec.describe Lista::Lista do
