@@ -81,6 +81,23 @@ RSpec.describe Alimento::Carnes do
     end
 end
 
+RSpec.describe Alimento::Pescados do
+    before :all do
+        @bacalao=Alimento::Pescados.new("bacalao", 17.7,0,0.4)
+        @atun=Alimento::Pescados.new("atun", 21.5,0,15.5)
+        @salmon=Alimento::Pescados.new("salmon", 19.9,0,13.6)
+    end
+    it "# Clase de un objeto" do
+        expect(@bacalao.class).to eq(Alimento::Pescados)
+        expect(@atun.class).to eq(Alimento::Pescados)
+        expect(@salmon.class).to eq(Alimento::Pescados)
+    end
+    it "# Tipo de un objeto" do
+        expect(@bacalao.instance_of?Alimento::Pescados).to eq(true)
+        expect(@atun.instance_of?Alimento::Pescados).to eq(true)
+        expect(@salmon.instance_of?Alimento::Pescados).to eq(true)
+    end
+end
 
 RSpec.describe Lista::Lista do
     describe "# Pruebas de la Clase Lista" do

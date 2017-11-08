@@ -30,6 +30,13 @@ module Alimento
             @categoria="Carnes y Derivados"
         end
     end
+
+    class Pescados < Alimento
+        def initialize(name,p,g,l)
+            super(name,p,g,l)
+            @categoria="Pescados y Maricos"
+        end
+    end
 end
 
 module Lista
