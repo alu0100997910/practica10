@@ -97,6 +97,11 @@ RSpec.describe Alimento::Pescados do
         expect(@atun.instance_of?Alimento::Pescados).to eq(true)
         expect(@salmon.instance_of?Alimento::Pescados).to eq(true)
     end
+    it "# Pertenencia a una Jerarquia" do
+        expect(@bacalao.kind_of?Alimento::Alimento).to eq(true)
+        expect(@atun.kind_of?Alimento::Alimento).to eq(true)
+        expect(@salmon.kind_of?Alimento::Alimento).to eq(true)
+    end
 end
 
 RSpec.describe Lista::Lista do
