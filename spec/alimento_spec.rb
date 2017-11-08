@@ -74,6 +74,11 @@ RSpec.describe Alimento::Carnes do
         expect(@ternera.instance_of?Alimento::Carnes).to eq(true)
         expect(@pollo.instance_of?Alimento::Carnes).to eq(true)
     end
+    it "# Pertenencia a una Jerarquia" do
+        expect(@cerdo.kind_of?Alimento::Alimento).to eq(true)
+        expect(@ternera.kind_of?Alimento::Alimento).to eq(true)
+        expect(@pollo.kind_of?Alimento::Alimento).to eq(true)
+    end
 end
 
 
