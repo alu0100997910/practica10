@@ -58,6 +58,20 @@ RSpec.describe Alimento::DerivadoLacteo do
     end
 end
 
+RSpec.describe Alimento::Carnes do
+    before :all do
+        @cerdo=Alimento::Carnes.new("Cerdo", 21.5,0,6.3)
+        @ternera=Alimento::Carnes.new("ternera", 21.1,0,3.1)
+        @pollo=Alimento::Carnes.new("pollo", 20.6,0,5.6)
+    end
+    it "# Clase de un objeto" do
+        expect(@cerdo.class).to eq(Alimento::Carnes)
+        expect(@ternera.class).to eq(Alimento::Carnes)
+        expect(@pollo.class).to eq(Alimento::Carnes)
+    end
+end
+
+
 RSpec.describe Lista::Lista do
     describe "# Pruebas de la Clase Lista" do
         before :all do

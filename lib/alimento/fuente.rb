@@ -23,6 +23,13 @@ module Alimento
             @categoria="Huevos, Lacteos y Helados"
         end
     end
+
+    class Carnes < Alimento
+        def initialize(name,p,g,l)
+            super(name,p,g,l)
+            @categoria="Carnes y Derivados"
+        end
+    end
 end
 
 module Lista
