@@ -165,7 +165,11 @@ RSpec.describe Alimento::Verduras do
         expect(@cebolla.class).to eq(Alimento::Verduras)
         expect(@calabaza.class).to eq(Alimento::Verduras)
     end
-    
+    it "# Tipo de un objeto" do
+        expect(@tomate.instance_of?Alimento::Verduras).to eq(true)
+        expect(@cebolla.instance_of?Alimento::Verduras).to eq(true)
+        expect(@calabaza.instance_of?Alimento::Verduras).to eq(true)
+    end
     
 end
 
