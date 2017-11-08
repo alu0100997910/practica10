@@ -146,6 +146,12 @@ RSpec.describe Alimento::Carbohidratos do
         expect(@lentejas.instance_of?Alimento::Carbohidratos).to eq(true)
         expect(@papas.instance_of?Alimento::Carbohidratos).to eq(true)
     end
+    it "# Pertenencia a una Jerarquia" do
+        expect(@azucar.kind_of?Alimento::Alimento).to eq(true)
+        expect(@arroz.kind_of?Alimento::Alimento).to eq(true)
+        expect(@lentejas.kind_of?Alimento::Alimento).to eq(true)
+        expect(@papas.kind_of?Alimento::Alimento).to eq(true)
+    end
 end
 
 RSpec.describe Lista::Lista do
