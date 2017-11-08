@@ -115,6 +115,11 @@ RSpec.describe Alimento::Grasos do
         expect(@mantequilla.class).to eq(Alimento::Grasos)
         expect(@chocolate.class).to eq(Alimento::Grasos)
     end
+    it "# Tipo de un objeto" do
+        expect(@aceiteoliva.instance_of?Alimento::Grasos).to eq(true)
+        expect(@mantequilla.instance_of?Alimento::Grasos).to eq(true)
+        expect(@chocolate.instance_of?Alimento::Grasos).to eq(true)
+    end
 end
 
 RSpec.describe Lista::Lista do
