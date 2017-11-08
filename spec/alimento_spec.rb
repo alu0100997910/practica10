@@ -69,6 +69,11 @@ RSpec.describe Alimento::Carnes do
         expect(@ternera.class).to eq(Alimento::Carnes)
         expect(@pollo.class).to eq(Alimento::Carnes)
     end
+    it "# Tipo de un objeto" do
+        expect(@cerdo.instance_of?Alimento::Carnes).to eq(true)
+        expect(@ternera.instance_of?Alimento::Carnes).to eq(true)
+        expect(@pollo.instance_of?Alimento::Carnes).to eq(true)
+    end
 end
 
 
