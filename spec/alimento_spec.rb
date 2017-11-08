@@ -51,6 +51,11 @@ RSpec.describe Alimento::DerivadoLacteo do
         expect(@leche.instance_of?Alimento::DerivadoLacteo).to eq(true)
         expect(@yogurt.instance_of?Alimento::DerivadoLacteo).to eq(true)
     end
+    it "# Pertenencia a una Jerarquia" do
+        expect(@huevofrito.kind_of?Alimento::Alimento).to eq(true)
+        expect(@leche.kind_of?Alimento::Alimento).to eq(true)
+        expect(@yogurt.kind_of?Alimento::Alimento).to eq(true)
+    end
 end
 
 RSpec.describe Lista::Lista do
