@@ -46,6 +46,11 @@ RSpec.describe Alimento::DerivadoLacteo do
         expect(@leche.class).to eq(Alimento::DerivadoLacteo)
         expect(@yogurt.class).to eq(Alimento::DerivadoLacteo)
     end
+    it "# Tipo de un objeto" do
+        expect(@huevofrito.instance_of?Alimento::DerivadoLacteo).to eq(true)
+        expect(@leche.instance_of?Alimento::DerivadoLacteo).to eq(true)
+        expect(@yogurt.instance_of?Alimento::DerivadoLacteo).to eq(true)
+    end
 end
 
 RSpec.describe Lista::Lista do
