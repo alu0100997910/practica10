@@ -44,6 +44,14 @@ module Alimento
             @categoria="Alimentos Grasos"
         end
     end
+    
+    class Carbohidratos < Alimento
+        def initialize(name,p,g,l)
+            super(name,p,g,l)
+            @categoria="Carbohidratos"
+        end
+    end
+    
 end
 
 module Lista

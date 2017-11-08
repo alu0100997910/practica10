@@ -127,6 +127,21 @@ RSpec.describe Alimento::Grasos do
     end
 end
 
+RSpec.describe Alimento::Carbohidratos do
+    before :all do
+        @azucar=Alimento::Carbohidratos.new("azucar", 0,99.8,0)
+        @arroz=Alimento::Carbohidratos.new("arroz", 6.8,77.7,0.6)
+        @lentejas=Alimento::Carbohidratos.new("lentejas", 23.5,52.0,1.4)
+        @papas=Alimento::Carbohidratos.new("papas", 2,15.4,0.1)
+    end
+    it "# Clase de un objeto" do
+        expect(@azucar.class).to eq(Alimento::Carbohidratos)
+        expect(@arroz.class).to eq(Alimento::Carbohidratos)
+        expect(@lentejas.class).to eq(Alimento::Carbohidratos)
+        expect(@papas.class).to eq(Alimento::Carbohidratos)
+    end
+end
+
 RSpec.describe Lista::Lista do
     describe "# Pruebas de la Clase Lista" do
         before :all do
