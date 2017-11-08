@@ -140,6 +140,12 @@ RSpec.describe Alimento::Carbohidratos do
         expect(@lentejas.class).to eq(Alimento::Carbohidratos)
         expect(@papas.class).to eq(Alimento::Carbohidratos)
     end
+    it "# Tipo de un objeto" do
+        expect(@azucar.instance_of?Alimento::Carbohidratos).to eq(true)
+        expect(@arroz.instance_of?Alimento::Carbohidratos).to eq(true)
+        expect(@lentejas.instance_of?Alimento::Carbohidratos).to eq(true)
+        expect(@papas.instance_of?Alimento::Carbohidratos).to eq(true)
+    end
 end
 
 RSpec.describe Lista::Lista do
