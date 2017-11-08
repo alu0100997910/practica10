@@ -120,6 +120,11 @@ RSpec.describe Alimento::Grasos do
         expect(@mantequilla.instance_of?Alimento::Grasos).to eq(true)
         expect(@chocolate.instance_of?Alimento::Grasos).to eq(true)
     end
+    it "# Pertenencia a una Jerarquia" do
+        expect(@aceiteoliva.kind_of?Alimento::Grasos).to eq(true)
+        expect(@mantequilla.kind_of?Alimento::Grasos).to eq(true)
+        expect(@chocolate.kind_of?Alimento::Grasos).to eq(true)
+    end
 end
 
 RSpec.describe Lista::Lista do
