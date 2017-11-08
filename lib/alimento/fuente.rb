@@ -55,7 +55,13 @@ module Alimento
     class Verduras < Alimento
         def initialize(name,p,g,l)
             super(name,p,g,l)
-            @categoria="Carbohidratos"
+            @categoria="Verduras"
+        end
+    end
+    class Frutas < Alimento
+        def initialize(name,p,g,l)
+            super(name,p,g,l)
+            @categoria="Frutas"
         end
     end
 

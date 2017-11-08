@@ -177,6 +177,19 @@ RSpec.describe Alimento::Verduras do
     end
 end
 
+RSpec.describe Alimento::Frutas do
+    before :all do
+        @manzana=Alimento::Frutas.new("manzana", 0.3,12.4,0.4)
+        @platano=Alimento::Frutas.new("platano", 1.2,21.4,0.2)
+        @pera=Alimento::Frutas.new("pera", 0.5,12.7,0.3)
+    end
+    it "# Clase de un objeto" do
+        expect(@manzana.class).to eq(Alimento::Frutas)
+        expect(@platano.class).to eq(Alimento::Frutas)
+        expect(@pera.class).to eq(Alimento::Frutas)
+    end
+end
+
 RSpec.describe Lista::Lista do
     describe "# Pruebas de la Clase Lista" do
         before :all do
