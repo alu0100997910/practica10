@@ -154,6 +154,21 @@ RSpec.describe Alimento::Carbohidratos do
     end
 end
 
+RSpec.describe Alimento::Verduras do
+    before :all do
+        @tomate=Alimento::Verduras.new("tomate", 1,3.5,0.2)
+        @cebolla=Alimento::Verduras.new("cebolla", 1.3,5.8,0.3)
+        @calabaza=Alimento::Verduras.new("calabaza", 1.1,4.8,0.1)
+    end
+    it "# Clase de un objeto" do
+        expect(@tomate.class).to eq(Alimento::Verduras)
+        expect(@cebolla.class).to eq(Alimento::Verduras)
+        expect(@calabaza.class).to eq(Alimento::Verduras)
+    end
+    
+    
+end
+
 RSpec.describe Lista::Lista do
     describe "# Pruebas de la Clase Lista" do
         before :all do
