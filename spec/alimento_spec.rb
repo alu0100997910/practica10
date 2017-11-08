@@ -193,6 +193,11 @@ RSpec.describe Alimento::Frutas do
         expect(@platano.instance_of?Alimento::Frutas).to eq(true)
         expect(@pera.instance_of?Alimento::Frutas).to eq(true)
     end
+    it "# Pertenencia a una Jerarquia" do
+        expect(@manzana.kind_of?Alimento::Frutas).to eq(true)
+        expect(@platano.kind_of?Alimento::Frutas).to eq(true)
+        expect(@pera.kind_of?Alimento::Frutas).to eq(true)
+    end
 end
 
 RSpec.describe Lista::Lista do
