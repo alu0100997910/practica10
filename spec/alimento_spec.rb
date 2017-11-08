@@ -188,6 +188,11 @@ RSpec.describe Alimento::Frutas do
         expect(@platano.class).to eq(Alimento::Frutas)
         expect(@pera.class).to eq(Alimento::Frutas)
     end
+    it "# Tipo de un objeto" do
+        expect(@manzana.instance_of?Alimento::Frutas).to eq(true)
+        expect(@platano.instance_of?Alimento::Frutas).to eq(true)
+        expect(@pera.instance_of?Alimento::Frutas).to eq(true)
+    end
 end
 
 RSpec.describe Lista::Lista do
