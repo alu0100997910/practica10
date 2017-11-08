@@ -16,7 +16,9 @@ module Alimento
             cadena = "Name: #{@nombre} --> [Proteins , Glucids , Lipids]: [#{@proteinas} , #{@glucidos} , #{@lipidos}]"
         end
     end
+end
 
+module Lista
     class Lista
         Node = Struct.new(:prev, :value, :next)
 
