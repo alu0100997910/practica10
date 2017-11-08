@@ -16,6 +16,13 @@ module Alimento
             cadena = "Name: #{@nombre} --> [Proteins , Glucids , Lipids]: [#{@proteinas} , #{@glucidos} , #{@lipidos}]"
         end
     end
+
+    class DerivadoLacteo < Alimento
+        def initialize(name,p,g,l)
+            super(name,p,g,l)
+            @categoria="Huevos, Lacteos y Helados"
+        end
+    end
 end
 
 module Lista

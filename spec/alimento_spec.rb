@@ -35,6 +35,19 @@ RSpec.describe Alimento::Alimento do
     end
 end
 
+RSpec.describe Alimento::DerivadoLacteo do
+    before :all do
+        @huevofrito=Alimento::DerivadoLacteo.new("Huevo Frito", 14.1,0,19.5)
+        @leche=Alimento::DerivadoLacteo.new("Leche", 3.3,4.8,3.2)
+        @yogurt=Alimento::DerivadoLacteo.new("Yogurt", 3.8,4.9,3.8)
+    end
+    it "# Clase de un objeto" do
+        expect(@huevofrito.class).to eq(Alimento::DerivadoLacteo)
+        expect(@leche.class).to eq(Alimento::DerivadoLacteo)
+        expect(@yogurt.class).to eq(Alimento::DerivadoLacteo)
+    end
+end
+
 RSpec.describe Lista::Lista do
     describe "# Pruebas de la Clase Lista" do
         before :all do
