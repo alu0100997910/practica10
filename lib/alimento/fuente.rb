@@ -1,6 +1,13 @@
 module Alimento
     class Alimento
+        include Comparable
         attr_reader :nombre, :proteinas, :glucidos, :lipidos
+        
+        def <=>(other)
+            return nil unless other.kind_of?Alimento
+            self.energeticValue <=> other.energeticValue
+        end
+
         def initialize(name,p,g,l)
             @nombre=name
             @proteinas=p

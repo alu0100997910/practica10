@@ -8,6 +8,8 @@ RSpec.describe Alimento::Alimento do
     describe "# Pruebas de la Clase Alimento" do
         before :each do
             @alimento=Alimento::Alimento.new("Huevo Frito",14.1,0,19.5)
+            @leche=Alimento::Alimento.new("Leche", 3.3,4.8,3.2)
+            @yogurt=Alimento::Alimento.new("Yogurt", 3.8,4.9,3.8)
         end
         
         describe "# Creacion del Alimento" do
@@ -30,6 +32,27 @@ RSpec.describe Alimento::Alimento do
             end
             it "Test del método valor energético" do
                 expect(@alimento.energeticValue).to eq(231.9)
+            end
+        end
+        describe "# Prueba Metodos Comparable" do
+            it "# A > B" do
+                expect(@yogurt).to be > @leche
+            end
+
+            it "# A >= B" do
+                expect(@leche).to be >= @leche
+            end
+
+            it "# A < B" do
+                expect(@leche).to be < @yogurt
+            end
+
+            it "# A <= B" do
+                expect(@leche).to be <= @leche
+            end
+
+            it "# A == B" do
+                expect(@leche).to eq(@leche)
             end
         end
     end
