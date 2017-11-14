@@ -261,6 +261,9 @@ RSpec.describe Lista::Lista do
                 expect(@lista.map{|i| i}).to eq([9, 2, 3])
                 expect(@lista.collect{|i| i}).to eq([9,2,3])
             end
+            it "# Metodo Sort" do
+                expect(@lista.sort).to eq([2,3,9])
+            end
         end
     end
 end
