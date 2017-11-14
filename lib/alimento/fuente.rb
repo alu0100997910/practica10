@@ -1,30 +1,49 @@
+# encoding: utf-8
+# Este módulo se ha creado para describir
+# las clases alimentos y las clases que heredan de los alimentos
+# Author::    Alejandro González Alonso  (mailto:alu0100997910@ull.edu.es)
+# Copyright:: Creative Commons
+# License::   Distributes under the same terms as Ruby
+
 module Alimento
+    # Esta clase permite representar un alimento, con sus valores 
+    # en Proteínas, Glúcidos y Lípidos
+    # Se han incluido los mixin Comparable y Enumerable.
     class Alimento
         include Comparable
         attr_reader :nombre, :proteinas, :glucidos, :lipidos
         
+        # Se define para incluir el mixin comparable
+        # Compara los alimentos según su valor energético
         def <=>(other)
             return nil unless other.kind_of?Alimento
             self.energeticValue <=> other.energeticValue
         end
 
+        # Se definen los valores de proteinas, glucidos y lipidos
+        # y el nombre del alimento
         def initialize(name,p,g,l)
             @nombre=name
             @proteinas=p
             @glucidos=g
             @lipidos=l
         end
-    
+        
+        # Se calcula el valor energético del alimento
         def energeticValue
             value = @proteinas*4 + @glucidos*4 + @lipidos*9
         end
-    
+        
+        # Formatea el objeto alimento a una cadena de texto
         def to_s
             cadena = "Name: #{@nombre} --> [Proteins , Glucids , Lipids]: [#{@proteinas} , #{@glucidos} , #{@lipidos}]"
         end
     end
 
     class DerivadoLacteo < Alimento
+        # Se definen los valores de proteinas, glucidos y lipidos
+        # y el nombre del alimento a través del initialize de la superclass
+        # y se define el nombre de la categoria
         def initialize(name,p,g,l)
             super(name,p,g,l)
             @categoria="Huevos, Lacteos y Helados"
@@ -32,6 +51,9 @@ module Alimento
     end
 
     class Carnes < Alimento
+        # Se definen los valores de proteinas, glucidos y lipidos
+        # y el nombre del alimento a través del initialize de la superclass
+        # y se define el nombre de la categoria
         def initialize(name,p,g,l)
             super(name,p,g,l)
             @categoria="Carnes y Derivados"
@@ -39,6 +61,9 @@ module Alimento
     end
 
     class Pescados < Alimento
+        # Se definen los valores de proteinas, glucidos y lipidos
+        # y el nombre del alimento a través del initialize de la superclass
+        # y se define el nombre de la categoria
         def initialize(name,p,g,l)
             super(name,p,g,l)
             @categoria="Pescados y Maricos"
@@ -46,6 +71,9 @@ module Alimento
     end
 
     class Grasos < Alimento
+        # Se definen los valores de proteinas, glucidos y lipidos
+        # y el nombre del alimento a través del initialize de la superclass
+        # y se define el nombre de la categoria
         def initialize(name,p,g,l)
             super(name,p,g,l)
             @categoria="Alimentos Grasos"
@@ -53,6 +81,9 @@ module Alimento
     end
     
     class Carbohidratos < Alimento
+        # Se definen los valores de proteinas, glucidos y lipidos
+        # y el nombre del alimento a través del initialize de la superclass
+        # y se define el nombre de la categoria
         def initialize(name,p,g,l)
             super(name,p,g,l)
             @categoria="Carbohidratos"
@@ -60,12 +91,18 @@ module Alimento
     end
 
     class Verduras < Alimento
+        # Se definen los valores de proteinas, glucidos y lipidos
+        # y el nombre del alimento a través del initialize de la superclass
+        # y se define el nombre de la categoria
         def initialize(name,p,g,l)
             super(name,p,g,l)
             @categoria="Verduras"
         end
     end
     class Frutas < Alimento
+        # Se definen los valores de proteinas, glucidos y lipidos
+        # y el nombre del alimento a través del initialize de la superclass
+        # y se define el nombre de la categoria
         def initialize(name,p,g,l)
             super(name,p,g,l)
             @categoria="Frutas"
@@ -74,17 +111,23 @@ module Alimento
 
 end
 
+# encoding: utf-8
+# Este módulo se ha creado para describir
+# la clase Lista
+
 module Lista
     class Lista
         include Enumerable
         Node = Struct.new(:prev, :value, :next)
 
+        # Inicializa la clase con un valor
         def initialize(val)
             first=Node.new(nil,val,nil)
             @head=first
             @tail=first
         end
 
+        # Añade los valores a la lista desde el final
         def push(val)
             if val.instance_of?Array
                 val.each do |i|
@@ -99,6 +142,8 @@ module Lista
             end
             @tail
         end
+
+        # Elimina el primer elemento de la lista
         def pop_front
             @head=@head.next
             @head.prev.next=nil
@@ -106,6 +151,7 @@ module Lista
             @head
         end
 
+        # Elimina el ultimo elemento de la lista
         def pop_back
             @tail=@tail.prev
             @tail.next.prev=nil
@@ -113,6 +159,8 @@ module Lista
             @tail
         end
 
+        # Se incluye el metodo del mixin Enumerable
+        # Se define como una iteración sobre los elementos de la lista
         def each
             current=@head
             while current!=nil
@@ -121,6 +169,7 @@ module Lista
             end
         end
 
+        # Formatea la Lista a una cadena de caracteres
         def to_s
             current=@head
             sout="[ "
