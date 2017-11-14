@@ -76,6 +76,7 @@ end
 
 module Lista
     class Lista
+        include Enumerable
         Node = Struct.new(:prev, :value, :next)
 
         def initialize(val)
@@ -110,6 +111,14 @@ module Lista
             @tail.next.prev=nil
             @tail.next=nil
             @tail
+        end
+
+        def each
+            current=@head
+            while current!=nil
+                yield current.value
+                current=current.next
+            end
         end
 
         def to_s

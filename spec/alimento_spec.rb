@@ -255,5 +255,12 @@ RSpec.describe Lista::Lista do
                 expect(@lista.to_s).to eq("[ 9, 2, 3 ]")
             end
         end
+
+        describe "# Pruebas Metodos Enumerable" do
+            it "# Metodo Collect" do
+                expect(@lista.map{|i| i}).to eq([9, 2, 3])
+                expect(@lista.collect{|i| i}).to eq([9,2,3])
+            end
+        end
     end
 end
