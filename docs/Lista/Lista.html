@@ -104,7 +104,19 @@
   
 </div>
 
-<h2>Defined Under Namespace</h2>
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>Esta clase permite representar una lista doblemente enlazadas Se han
+incluido el mixin Enumerable.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><h2>Defined Under Namespace</h2>
 <p class="children">
   
     
@@ -309,14 +321,14 @@ sobre los elementos de la lista.</p>
       <pre class="lines">
 
 
-124
-125
-126
-127
-128</pre>
+135
+136
+137
+138
+139</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/alimento/fuente.rb', line 124</span>
+      <pre class="code"><span class="info file"># File 'lib/alimento/fuente.rb', line 135</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_val'>val</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_first'>first</span><span class='op'>=</span><span class='const'>Node</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='kw'>nil</span><span class='comma'>,</span><span class='id identifier rubyid_val'>val</span><span class='comma'>,</span><span class='kw'>nil</span><span class='rparen'>)</span>
@@ -362,16 +374,16 @@ sobre los elementos de la lista</p>
       <pre class="lines">
 
 
-164
-165
-166
-167
-168
-169
-170</pre>
+177
+178
+179
+180
+181
+182
+183</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/alimento/fuente.rb', line 164</span>
+      <pre class="code"><span class="info file"># File 'lib/alimento/fuente.rb', line 177</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_each'>each</span>
     <span class='id identifier rubyid_current'>current</span><span class='op'>=</span><span class='ivar'>@head</span>
@@ -411,21 +423,23 @@ sobre los elementos de la lista</p>
       <pre class="lines">
 
 
-155
-156
-157
-158
-159
-160</pre>
+167
+168
+169
+170
+171
+172
+173</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/alimento/fuente.rb', line 155</span>
+      <pre class="code"><span class="info file"># File 'lib/alimento/fuente.rb', line 167</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_pop_back'>pop_back</span>
+    <span class='id identifier rubyid_aux'>aux</span><span class='op'>=</span><span class='ivar'>@tail</span><span class='period'>.</span><span class='id identifier rubyid_value'>value</span>
     <span class='ivar'>@tail</span><span class='op'>=</span><span class='ivar'>@tail</span><span class='period'>.</span><span class='id identifier rubyid_prev'>prev</span>
     <span class='ivar'>@tail</span><span class='period'>.</span><span class='id identifier rubyid_next'>next</span><span class='period'>.</span><span class='id identifier rubyid_prev'>prev</span><span class='op'>=</span><span class='kw'>nil</span>
     <span class='ivar'>@tail</span><span class='period'>.</span><span class='id identifier rubyid_next'>next</span><span class='op'>=</span><span class='kw'>nil</span>
-    <span class='ivar'>@tail</span>
+    <span class='id identifier rubyid_aux'>aux</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -458,21 +472,23 @@ sobre los elementos de la lista</p>
       <pre class="lines">
 
 
-147
-148
-149
-150
-151
-152</pre>
+158
+159
+160
+161
+162
+163
+164</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/alimento/fuente.rb', line 147</span>
+      <pre class="code"><span class="info file"># File 'lib/alimento/fuente.rb', line 158</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_pop_front'>pop_front</span>
+    <span class='id identifier rubyid_aux'>aux</span><span class='op'>=</span><span class='ivar'>@head</span><span class='period'>.</span><span class='id identifier rubyid_value'>value</span>
     <span class='ivar'>@head</span><span class='op'>=</span><span class='ivar'>@head</span><span class='period'>.</span><span class='id identifier rubyid_next'>next</span>
     <span class='ivar'>@head</span><span class='period'>.</span><span class='id identifier rubyid_prev'>prev</span><span class='period'>.</span><span class='id identifier rubyid_next'>next</span><span class='op'>=</span><span class='kw'>nil</span>
     <span class='ivar'>@head</span><span class='period'>.</span><span class='id identifier rubyid_prev'>prev</span><span class='op'>=</span><span class='kw'>nil</span>
-    <span class='ivar'>@head</span>
+    <span class='id identifier rubyid_aux'>aux</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -505,23 +521,23 @@ sobre los elementos de la lista</p>
       <pre class="lines">
 
 
-131
-132
-133
-134
-135
-136
-137
-138
-139
-140
-141
 142
 143
-144</pre>
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/alimento/fuente.rb', line 131</span>
+      <pre class="code"><span class="info file"># File 'lib/alimento/fuente.rb', line 142</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_push'>push</span><span class='lparen'>(</span><span class='id identifier rubyid_val'>val</span><span class='rparen'>)</span>
     <span class='kw'>if</span> <span class='id identifier rubyid_val'>val</span><span class='period'>.</span><span class='id identifier rubyid_instance_of?'>instance_of?</span><span class='const'>Array</span>
@@ -535,7 +551,7 @@ sobre los elementos de la lista</p>
         <span class='ivar'>@tail</span><span class='period'>.</span><span class='id identifier rubyid_next'>next</span><span class='op'>=</span><span class='id identifier rubyid_aux'>aux</span>
         <span class='ivar'>@tail</span><span class='op'>=</span><span class='id identifier rubyid_aux'>aux</span>
     <span class='kw'>end</span>
-    <span class='ivar'>@tail</span>
+    <span class='ivar'>@tail</span><span class='period'>.</span><span class='id identifier rubyid_value'>value</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -568,22 +584,22 @@ sobre los elementos de la lista</p>
       <pre class="lines">
 
 
-173
-174
-175
-176
-177
-178
-179
-180
-181
-182
-183
-184
-185</pre>
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/alimento/fuente.rb', line 173</span>
+      <pre class="code"><span class="info file"># File 'lib/alimento/fuente.rb', line 186</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_s'>to_s</span>
     <span class='id identifier rubyid_current'>current</span><span class='op'>=</span><span class='ivar'>@head</span>
@@ -608,7 +624,7 @@ sobre los elementos de la lista</p>
 </div>
 
       <div id="footer">
-  Generated on Tue Nov 14 13:54:46 2017 by
+  Generated on Thu Nov 16 12:16:56 2017 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.9 (ruby-2.4.2).
 </div>

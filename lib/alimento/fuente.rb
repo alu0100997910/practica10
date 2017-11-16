@@ -8,7 +8,7 @@
 module Alimento
     # Esta clase permite representar un alimento, con sus valores 
     # en Proteínas, Glúcidos y Lípidos
-    # Se han incluido los mixin Comparable y Enumerable.
+    # Se han incluido los mixin Comparable.
     class Alimento
         include Comparable
         attr_reader :nombre, :proteinas, :glucidos, :lipidos
@@ -39,7 +39,7 @@ module Alimento
             cadena = "Name: #{@nombre} --> [Proteins , Glucids , Lipids]: [#{@proteinas} , #{@glucidos} , #{@lipidos}]"
         end
     end
-
+    # Esta clase permite representar un alimento que es derivado lacteo 
     class DerivadoLacteo < Alimento
         # Se definen los valores de proteinas, glucidos y lipidos
         # y el nombre del alimento a través del initialize de la superclass
@@ -50,6 +50,7 @@ module Alimento
         end
     end
 
+    # Esta clase permite representar un alimento en la categoria de carnes
     class Carnes < Alimento
         # Se definen los valores de proteinas, glucidos y lipidos
         # y el nombre del alimento a través del initialize de la superclass
@@ -60,6 +61,7 @@ module Alimento
         end
     end
 
+    # Esta clase permite representar un alimento en la categoria pescados
     class Pescados < Alimento
         # Se definen los valores de proteinas, glucidos y lipidos
         # y el nombre del alimento a través del initialize de la superclass
@@ -70,6 +72,7 @@ module Alimento
         end
     end
 
+    # Esta clase permite representar un alimento que tenga alto contenido en grasas
     class Grasos < Alimento
         # Se definen los valores de proteinas, glucidos y lipidos
         # y el nombre del alimento a través del initialize de la superclass
@@ -80,6 +83,7 @@ module Alimento
         end
     end
     
+    # Esta clase permite representar un alimento con alto contenido de carbohidratos
     class Carbohidratos < Alimento
         # Se definen los valores de proteinas, glucidos y lipidos
         # y el nombre del alimento a través del initialize de la superclass
@@ -90,6 +94,7 @@ module Alimento
         end
     end
 
+    # Esta clase permite representar un alimento en la categoria de verduras
     class Verduras < Alimento
         # Se definen los valores de proteinas, glucidos y lipidos
         # y el nombre del alimento a través del initialize de la superclass
@@ -99,6 +104,8 @@ module Alimento
             @categoria="Verduras"
         end
     end
+
+    # Esta clase permite representar un alimento en la categoria de frutas
     class Frutas < Alimento
         # Se definen los valores de proteinas, glucidos y lipidos
         # y el nombre del alimento a través del initialize de la superclass
@@ -111,11 +118,15 @@ module Alimento
 
 end
 
-# encoding: utf-8
 # Este módulo se ha creado para describir
 # la clase Lista
+# Author::    Alejandro González Alonso  (mailto:alu0100997910@ull.edu.es)
+# Copyright:: Creative Commons
+# License::   Distributes under the same terms as Ruby
 
 module Lista
+    # Esta clase permite representar una lista doblemente enlazadas
+    # Se han incluido el mixin Enumerable.
     class Lista
         include Enumerable
         Node = Struct.new(:prev, :value, :next)
