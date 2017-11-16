@@ -236,19 +236,19 @@ RSpec.describe Lista::Lista do
         describe "# Metodos de la clase Lista" do
             it "# Push 1 objeto" do
                 object = 9
-                expect(@lista.push(object).value).to eq(9)
+                expect(@lista.push(object)).to eq(9)
             end
             it "# Push 2+ Objects" do
                 array=[2,3,4]
-                expect(@lista.push(array).value).to eq(4)
+                expect(@lista.push(array)).to eq(4)
             end
     
             it "# Pop_front" do
-                expect(@lista.pop_front.value).to eq(9)
+                expect(@lista.pop_front).to eq(5)
             end
     
             it "# Pop_back" do
-                expect(@lista.pop_back.value).to eq(3)
+                expect(@lista.pop_back).to eq(4)
             end
     
             it "# to_s" do
@@ -258,7 +258,7 @@ RSpec.describe Lista::Lista do
 
         describe "# Pruebas Metodos Enumerable" do
             it "# Metodo Collect" do
-                expect(@lista.map{|i| i}).to eq([9, 2, 3])
+                expect(@lista.map{|i| i}).to eq([9,2,3])
                 expect(@lista.collect{|i| i}).to eq([9,2,3])
             end
             it "# Metodo Sort" do

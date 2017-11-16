@@ -140,23 +140,25 @@ module Lista
                 @tail.next=aux
                 @tail=aux
             end
-            @tail
+            @tail.value
         end
 
         # Elimina el primer elemento de la lista
         def pop_front
+            aux=@head.value
             @head=@head.next
             @head.prev.next=nil
             @head.prev=nil
-            @head
+            aux
         end
 
         # Elimina el ultimo elemento de la lista
         def pop_back
+            aux=@tail.value
             @tail=@tail.prev
             @tail.next.prev=nil
             @tail.next=nil
-            @tail
+            aux
         end
 
         # Se incluye el metodo del mixin Enumerable
