@@ -45,6 +45,16 @@ RSpec.describe Alimento::Alimento do
                 expect(@chocolate.aibc).to eq([7.500000000000005, 44.25000000000004])
                 expect(@manzana.aibc).to eq([27.49999999999999, 183.25])
             end
+
+            it "Test del indice glucemico individual" do
+                expect(@yogurt.indIdv(0,@glucosa)).to eq(8.49609375000002)
+                expect(@yogurt.indIdv(1,@glucosa)).to eq(74.26273458445037)
+                expect(@chocolate.indIdv(0,@glucosa)).to eq(2.9296875000000027)
+                expect(@chocolate.indIdv(1,@glucosa)).to eq(23.726541554959805)
+                expect(@manzana.indIdv(0,@glucosa)).to eq(10.742187499999998)
+                expect(@manzana.indIdv(1,@glucosa)).to eq(98.25737265415547)
+            end
+
         end
         describe "# Prueba Metodos Comparable" do
             it "# A > B" do
