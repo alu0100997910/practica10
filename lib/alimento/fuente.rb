@@ -53,6 +53,14 @@ module Alimento
             indidv=self.aibc[individuo]*100/glucosa.aibc[individuo]
         end
 
+        def indGlu(glucosa)
+            indidv=[]
+            @g.each_with_index do |value,index|
+                indidv << indIdv(index,glucosa)
+            end
+            (indidv.reduce(:+))/@g.size
+        end
+
         # Formatea el objeto alimento a una cadena de texto
         def to_s
             cadena = "Name: #{@nombre} --> [Proteins , Glucids , Lipids]: [#{@proteinas} , #{@glucidos} , #{@lipidos}]"
