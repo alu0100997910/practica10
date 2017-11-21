@@ -22,11 +22,12 @@ module Alimento
 
         # Se definen los valores de proteinas, glucidos y lipidos
         # y el nombre del alimento
-        def initialize(name,p,g,l)
+        def initialize(name,p,g,l,med=nil)
             @nombre=name
             @proteinas=p
             @glucidos=g
             @lipidos=l
+            @g=med
         end
         
         # Se calcula el valor energético del alimento
@@ -34,6 +35,32 @@ module Alimento
             value = @proteinas*4 + @glucidos*4 + @lipidos*9
         end
         
+        def aibc
+            aibc=[]
+            @g.each do |value|
+                s=[]
+                value.each_with_index do |val,j|
+                    if (j!=0)
+                        s << (((val-value[0])+(value[j-1]-value[0]))*5)/2
+                    end
+                end
+                aibc << s.reduce(:+)
+            end
+            aibc
+        end
+
+        def indIdv(individuo,glucosa)
+            indidv=self.aibc[individuo]*100/glucosa.aibc[individuo]
+        end
+
+        def indGlu(glucosa)
+            indidv=[]
+            @g.each_with_index do |value,index|
+                indidv << indIdv(index,glucosa)
+            end
+            (indidv.reduce(:+))/@g.size
+        end
+
         # Formatea el objeto alimento a una cadena de texto
         def to_s
             cadena = "Name: #{@nombre} --> [Proteins , Glucids , Lipids]: [#{@proteinas} , #{@glucidos} , #{@lipidos}]"

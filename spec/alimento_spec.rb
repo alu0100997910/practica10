@@ -9,7 +9,14 @@ RSpec.describe Alimento::Alimento do
         before :each do
             @alimento=Alimento::Alimento.new("Huevo Frito",14.1,0,19.5)
             @leche=Alimento::Alimento.new("Leche", 3.3,4.8,3.2)
-            @yogurt=Alimento::Alimento.new("Yogurt", 3.8,4.9,3.8)
+            @yogurt=Alimento::Alimento.new("Yogurt", 3.8,4.9,3.8,           [[6.1,6.6,6.3,6.3,6.1,6.9,6.8,6.5,6.4,6.9,6.8,6.5,6.3,6.2,6.7,6.2,5.9,5.8,5.8,5.8,5.8,5.8,5.9,6.2,6.4],
+                                                                            [4.9,4.9,5.2,5.8,6.5,7.0,7.2,7.3,7.3,6.6,6.2,6.1,6.0,6.1,5.9,5.9,5.9,5.9,5.8,5.8,5.5,5.5,5.6,5.9,5.9]])
+            @chocolate=Alimento::Alimento.new("chocolate", 5.3,47.0,30.0,   [[6.5,6.5,6.7,6.5,6.5,6.8,6.7,6.2,6.5,7.2,6.9,7.0,6.3,6.2,6.1,5.9,5.8,6.1,6.7,6.7,6.6,6.7,6.9,7.2,7.1],
+                                                                            [4.6,4.6,4.7,4.7,4.8,4.7,4.8,4.8,4.6,4.4,4.7,4.7,4.8,4.7,5.2,5.9,5.9,5.7,5.4,5.3,5.1,4.8,4.8,4.9,5.9]])
+            @manzana=Alimento::Alimento.new("manzana", 0.3,12.4,0.4,        [[6.7,6.5,6.8,6.9,7.0,7.1,6.9,6.9,6.9,6.7,6.9,7.3,7.0,7.0,7.2,7.1,6.8,7.2,7.3,7.0,6.8,6.7,6.8,6.7,6.9],
+                                                                            [4.6,4.8,5.3,5.6,6.1,6.5,6.6,7.0,7.0,6.8,6.4,6.3,6.1,6.1,6.2,6.0,6.1,6.1,6.2,6.3,6.4,6.1,6.1,5.7,5.9]])
+            @glucosa=Alimento::Alimento.new("glucosa",0,0,0,                [[4.9,5.3,5.9,6.7,7.2,7.6,8.0,8.2,8.2,8.4,8.3,8.3,8.0,7.5,7.1,6.8,6.8,6.9,6.8,6.3,6.2,6.3,6.2,6.3,6.1],
+                                                                            [6.3,5.4,5.6,5.7,6.5,7.4,7.9,7.4,7.7,7.9,7.9,7.8,7.8,7.8,8.0,8.5,9.4,10.8,10.5,9.1,8.9,8.3,7.7,7.6,7.5]])
         end
         
         describe "# Creacion del Alimento" do
@@ -33,6 +40,27 @@ RSpec.describe Alimento::Alimento do
             it "Test del método valor energético" do
                 expect(@alimento.energeticValue).to eq(231.9)
             end
+            it "Test del método aibc" do
+                expect(@yogurt.aibc).to eq([21.750000000000046, 138.49999999999997])
+                expect(@chocolate.aibc).to eq([7.500000000000005, 44.25000000000004])
+                expect(@manzana.aibc).to eq([27.49999999999999, 183.25])
+            end
+
+            it "Test del indice glucemico individual" do
+                expect(@yogurt.indIdv(0,@glucosa)).to eq(8.49609375000002)
+                expect(@yogurt.indIdv(1,@glucosa)).to eq(74.26273458445037)
+                expect(@chocolate.indIdv(0,@glucosa)).to eq(2.9296875000000027)
+                expect(@chocolate.indIdv(1,@glucosa)).to eq(23.726541554959805)
+                expect(@manzana.indIdv(0,@glucosa)).to eq(10.742187499999998)
+                expect(@manzana.indIdv(1,@glucosa)).to eq(98.25737265415547)
+            end
+
+            it "Test del indice glucémico" do
+                expect(@yogurt.indGlu(@glucosa)).to eq(41.37941416722519)
+                expect(@chocolate.indGlu(@glucosa)).to eq(13.328114527479904)
+                expect(@manzana.indGlu(@glucosa)).to eq(54.49978007707774) 
+            end
+
         end
         describe "# Prueba Metodos Comparable" do
             it "# A > B" do
