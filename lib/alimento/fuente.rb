@@ -63,7 +63,7 @@ module Alimento
 
         # Formatea el objeto alimento a una cadena de texto
         def to_s
-            cadena = "Name: #{@nombre} --> [Proteins , Glucids , Lipids]: [#{@proteinas} , #{@glucidos} , #{@lipidos}]"
+            cadena = "[#{@nombre},#{@proteinas},#{@glucidos},#{@lipidos}]"
         end
     end
     # Esta clase permite representar un alimento que es derivado lacteo 
@@ -160,9 +160,23 @@ module Lista
 
         # Inicializa la clase con un valor
         def initialize(val)
-            first=Node.new(nil,val,nil)
-            @head=first
-            @tail=first
+            if val.instance_of?Array
+                val.each_with_index do |value,i|
+                    if i==0
+                        first=Node.new(nil,value,nil)
+                        @head=first
+                        @tail=first
+                    else
+                        aux=Node.new(@tail, value, nil)
+                        @tail.next=aux
+                        @tail=aux
+                    end
+                end
+            else
+                first=Node.new(nil,val,nil)
+                @head=first
+                @tail=first
+            end
         end
 
         # Añade los valores a la lista desde el final
@@ -209,15 +223,35 @@ module Lista
             end
         end
 
+        def sortWFor
+            arr=[]
+            current=@head
+            while (current!=nil)
+                arr << current.value
+                current=current.next
+            end
+
+            for i in 1..arr.size-1
+                for j in 0..arr.size-i-1
+                    if arr[j+1]<arr[j]
+                        aux=arr[j+1]
+                        arr[j+1]=arr[j]
+                        arr[j]=aux
+                    end
+                end
+            end
+            arr
+        end
+
         # Formatea la Lista a una cadena de caracteres
         def to_s
             current=@head
-            sout="[ "
+            sout="["
             while current!=nil
                 if current.next==nil
-                    sout+=current.value.to_s + " "
+                    sout+=current.value.to_s
                 else
-                    sout+=current.value.to_s + ", "
+                    sout+=current.value.to_s + ","
                 end
                 current=current.next
             end
