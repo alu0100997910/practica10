@@ -243,6 +243,27 @@ module Lista
             arr
         end
 
+        def sortWEach 
+            arr=[]
+            current=@head
+            while (current!=nil)
+                arr << current.value
+                current=current.next
+            end
+
+            arr.each.with_index(1) do |val,i|
+                arr.each_with_index do |val2,j|
+                    if (j<arr.size-i)
+                        if arr[j+1]<arr[j]
+                            aux=arr[j+1]
+                            arr[j+1]=arr[j]
+                            arr[j]=aux
+                        end
+                    end
+                end
+            end
+        end
+
         # Formatea la Lista a una cadena de caracteres
         def to_s
             current=@head
