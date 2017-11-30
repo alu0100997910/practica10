@@ -332,3 +332,12 @@ RSpec.describe Lista::Lista do
         end
     end
 end
+
+
+include Benchmark
+@lista=Lista::Lista.new([2,3,4,5,62,3,45,3,32,5,123,34,6,2,4,6,234,5,2,2])
+Benchmark.benchmark(CAPTION, 7, FORMAT, ">total:", ">avg:") do |x|
+    sf = x.report("sortfor")   { (1..20).each{ @lista.sortWFor } }
+    se = x.report("sorteach")  { (1..20).each{ @lista.sortWEach } }
+    s = x.report("sort")   { (1..20).each{ @lista.sort } }
+end
