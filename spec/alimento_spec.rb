@@ -332,36 +332,3 @@ RSpec.describe Lista::Lista do
         end
     end
 end
-
-include Benchmark
-@huevofrito=Alimento::DerivadoLacteo.new("Huevo Frito", 14.1,0,19.5)
-@leche=Alimento::DerivadoLacteo.new("Leche", 3.3,4.8,3.2)
-@yogurt=Alimento::DerivadoLacteo.new("Yogurt", 3.8,4.9,3.8)
-@cerdo=Alimento::Carnes.new("Cerdo", 21.5,0,6.3)
-@ternera=Alimento::Carnes.new("ternera", 21.1,0,3.1)
-@pollo=Alimento::Carnes.new("pollo", 20.6,0,5.6)
-@bacalao=Alimento::Pescados.new("bacalao", 17.7,0,0.4)
-@atun=Alimento::Pescados.new("atun", 21.5,0,15.5)
-@salmon=Alimento::Pescados.new("salmon", 19.9,0,13.6)
-@aceiteoliva=Alimento::Grasos.new("aceite oliva", 0,0.2,99.6)
-@mantequilla=Alimento::Grasos.new("mantequilla", 0.7,0,83.2)
-@chocolate=Alimento::Grasos.new("chocolate", 5.3,47.0,30.0)
-@azucar=Alimento::Carbohidratos.new("azucar", 0,99.8,0)
-@arroz=Alimento::Carbohidratos.new("arroz", 6.8,77.7,0.6)
-@lentejas=Alimento::Carbohidratos.new("lentejas", 23.5,52.0,1.4)
-@papas=Alimento::Carbohidratos.new("papas", 2,15.4,0.1)
-@tomate=Alimento::Verduras.new("tomate", 1,3.5,0.2)
-@cebolla=Alimento::Verduras.new("cebolla", 1.3,5.8,0.3)
-@calabaza=Alimento::Verduras.new("calabaza", 1.1,4.8,0.1)
-@manzana=Alimento::Frutas.new("manzana", 0.3,12.4,0.4)
-@platano=Alimento::Frutas.new("platano", 1.2,21.4,0.2)
-@pera=Alimento::Frutas.new("pera", 0.5,12.7,0.3)
-@tabla=Lista::Lista.new([@huevofrito,@leche,@yogurt,@cerdo,@ternera,@pollo,@bacalao,@atun,@salmon,@aceiteoliva,@mantequilla,
-                        @chocolate,@azucar,@arroz,@lentejas,@papas,@tomate,@cebolla,@calabaza,@manzana,@platano,@pera])
-
-Benchmark.benchmark(CAPTION, 7, FORMAT, ">total:", ">avg:") do |x|
-    sf = x.report("sortfor")   { @tabla.sortWFor }
-    se = x.report("sorteach")  { @tabla.sortWEach }
-    s = x.report("sorteach")   { @tabla.sort }
-    [sf+se+s,sf+se+s/3]
-end
