@@ -326,6 +326,9 @@ RSpec.describe Lista::Lista do
             it "# Ordenacion por each" do
                 expect(@tabla.sortWEach).to eq([@tomate,@calabaza,@cebolla,@manzana,@pera,@leche,@yogurt,@papas,@bacalao,@platano,@ternera,@pollo,@cerdo,@salmon,@atun,@huevofrito,@lentejas,@arroz,@azucar,@chocolate,@mantequilla,@aceiteoliva])
             end
+            it "# Ordenacion por each" do
+                expect(@tabla.sort).to eq([@tomate,@calabaza,@cebolla,@manzana,@pera,@leche,@yogurt,@papas,@bacalao,@platano,@ternera,@pollo,@cerdo,@salmon,@atun,@huevofrito,@lentejas,@arroz,@azucar,@chocolate,@mantequilla,@aceiteoliva])
+            end
         end
     end
 end
