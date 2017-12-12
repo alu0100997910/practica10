@@ -144,13 +144,14 @@ module Alimento
     end
 
     class Plato
-        attr_reader :vegetales, :frutas, :granos, :proteinas
+        attr_reader :vegetales, :frutas, :granos, :proteinas, :aceites
         def initialize(name,&block)
             @name=name
             @vegetales=[]
             @frutas=[]
             @granos=[]
             @proteinas=[]
+            @aceites=[]
             @tabla={"cups" => 2, "piece" => 1, "glass" => 1.5, "grams" => 0.05 }
             @listaalimentos=[  DerivadoLacteo.new("Huevo", 14.1,0,19.5),
                                 DerivadoLacteo.new("Leche", 3.3,4.8,3.2),
@@ -232,6 +233,19 @@ module Alimento
             end
 
             @proteinas << proteinas
+        end
+        def aceite(name,options = {})
+            aceite=@listaalimentos.select do |alimento|
+                alimento.nombre.downcase == name.downcase
+            end
+
+            if options[:porcion]
+                info=options[:porcion].split(/\W+/)
+                amount=info[0].to_i*@tabla[info[1]]
+                aceite << amount;
+            end
+
+            @aceites << aceite
         end
     end
 

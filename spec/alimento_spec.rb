@@ -342,6 +342,7 @@ RSpec.describe Alimento::Plato do
             cereal      "arroz"     , :porcion => "1 glass"
             proteina   "Huevo"     , :porcion => "1 glass"
             proteina   "Lentejas"  , :porcion => "1 cups"
+            aceite      "aceite de oliva"   , :porcion => "30 grams"
         end
     end
     it "# add vegetal" do
@@ -356,6 +357,9 @@ RSpec.describe Alimento::Plato do
     it "# add proteinas" do
         expect(@plato.proteinas[0]).to eq([Alimento::DerivadoLacteo.new("Huevo", 14.1,0,19.5),1.5])
         expect(@plato.proteinas[1]).to eq([Alimento::Carbohidratos.new("lentejas", 23.5,52.0,1.4),2])
+    end
+    it "# add aceite" do
+        expect(@plato.aceites[0]).to eq([Alimento::Grasos.new("aceite de oliva", 0,0.2,99.6),1.5])
     end
 end
 
