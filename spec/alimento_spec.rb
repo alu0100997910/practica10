@@ -334,6 +334,18 @@ RSpec.describe Lista::Lista do
 end
 
 
+RSpec.describe Alimento::Plato do
+    before :all do
+        @plato=Alimento::Plato.new("Lentejas") do
+            vegetal     "Tomate"    , :porcion => "2 cups"
+        end
+    end
+    it "# add vegetal" do
+        expect(@plato.vegetales[0]).to eq([Alimento::Verduras.new("tomate", 1,3.5,0.2),4])
+    end
+end
+
+
 include Benchmark
 @huevofrito=Alimento::DerivadoLacteo.new("Huevo Frito", 14.1,0,19.5)
 @leche=Alimento::DerivadoLacteo.new("Leche", 3.3,4.8,3.2)

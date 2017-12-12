@@ -143,6 +143,56 @@ module Alimento
         end
     end
 
+    class Plato
+        attr_reader :vegetales, :listaalimentos
+        def initialize(name,&block)
+            @name=name
+            @vegetales=[]
+            
+            @tabla={"cups" => 2, "piece" => 1, "glass" => 1.5, "grams" => 0.05 }
+            @listaalimentos=[  DerivadoLacteo.new("Huevo", 14.1,0,19.5),
+                                DerivadoLacteo.new("Leche", 3.3,4.8,3.2),
+                                DerivadoLacteo.new("Yogurt", 3.8,4.9,3.8),
+                                Carnes.new("Cerdo", 21.5,0,6.3),
+                                Carnes.new("ternera", 21.1,0,3.1),
+                                Carnes.new("pollo", 20.6,0,5.6),
+                                Pescados.new("bacalao", 17.7,0,0.4),
+                                Pescados.new("atun", 21.5,0,15.5),
+                                Pescados.new("salmon", 19.9,0,13.6),
+                                Grasos.new("aceite de oliva", 0,0.2,99.6),
+                                Grasos.new("mantequilla", 0.7,0,83.2),
+                                Grasos.new("chocolate", 5.3,47.0,30.0),
+                                Carbohidratos.new("azucar", 0,99.8,0),
+                                Carbohidratos.new("arroz", 6.8,77.7,0.6),
+                                Carbohidratos.new("lentejas", 23.5,52.0,1.4),
+                                Carbohidratos.new("papas", 2,15.4,0.1),
+                                Verduras.new("tomate", 1,3.5,0.2),
+                                Verduras.new("cebolla", 1.3,5.8,0.3),
+                                Verduras.new("calabaza", 1.1,4.8,0.1),
+                                Frutas.new("manzana", 0.3,12.4,0.4),
+                                Frutas.new("platano", 1.2,21.4,0.2),
+                                Frutas.new("pera", 0.5,12.7,0.3)]
+
+            if block_given?
+                instance_eval(&block)
+            end
+        end
+
+        def vegetal(name,options = {})
+            vegetal=@listaalimentos.select do |alimento|
+                alimento.nombre.downcase == name.downcase
+            end
+
+            if options[:porcion]
+                info=options[:porcion].split(/\W+/)
+                amount=info[0].to_i*@tabla[info[1]]
+                vegetal << amount;
+            end
+
+            @vegetales<<vegetal
+        end
+    end
+
 end
 
 # Este módulo se ha creado para describir
