@@ -339,6 +339,7 @@ RSpec.describe Alimento::Plato do
         @plato=Alimento::Plato.new("Lentejas") do
             vegetal     "Tomate"    , :porcion => "2 cups"
             fruta       "Platano"   , :porcion => "20 grams"
+            cereal      "arroz"     , :porcion => "1 glass"
         end
     end
     it "# add vegetal" do
@@ -346,6 +347,9 @@ RSpec.describe Alimento::Plato do
     end
     it "# add fruta" do
         expect(@plato.frutas[0]).to eq([Alimento::Frutas.new("platano", 1.2,21.4,0.2),1.0])
+    end
+    it "# add cereal" do
+        expect(@plato.granos[0]).to eq([Alimento::Carbohidratos.new("arroz", 6.8,77.7,0.6),1.5])
     end
 end
 
