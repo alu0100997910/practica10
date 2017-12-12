@@ -144,10 +144,11 @@ module Alimento
     end
 
     class Plato
-        attr_reader :vegetales, :listaalimentos
+        attr_reader :vegetales, :frutas
         def initialize(name,&block)
             @name=name
             @vegetales=[]
+            @frutas=[]
             
             @tabla={"cups" => 2, "piece" => 1, "glass" => 1.5, "grams" => 0.05 }
             @listaalimentos=[  DerivadoLacteo.new("Huevo", 14.1,0,19.5),
@@ -190,6 +191,20 @@ module Alimento
             end
 
             @vegetales<<vegetal
+        end
+
+        def fruta(name,options = {})
+            fruta=@listaalimentos.select do |alimento|
+                alimento.nombre.downcase == name.downcase
+            end
+
+            if options[:porcion]
+                info=options[:porcion].split(/\W+/)
+                amount=info[0].to_i*@tabla[info[1]]
+                fruta << amount;
+            end
+
+            @frutas << fruta
         end
     end
 
