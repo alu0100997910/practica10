@@ -284,6 +284,30 @@ valor energético.</p>
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#aibc-instance_method" title="#aibc (instance method)">#<strong>aibc</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Calcula el area bajo la curva de un alimento.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#energeticValue-instance_method" title="#energeticValue (instance method)">#<strong>energeticValue</strong>  &#x21d2; Object </a>
     
 
@@ -308,7 +332,55 @@ valor energético.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>(name, p, g, l)  &#x21d2; Alimento </a>
+      <a href="#indGlu-instance_method" title="#indGlu (instance method)">#<strong>indGlu</strong>(glucosa)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Calcula el indice glucemico total de un alimento.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#indIdv-instance_method" title="#indIdv (instance method)">#<strong>indIdv</strong>(individuo, glucosa)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Calcula el indice glucemico individual de un alimento.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>(name, p, g, l, med = nil)  &#x21d2; Alimento </a>
     
 
     
@@ -366,7 +438,7 @@ alimento.</p>
     <div class="method_details first">
   <h3 class="signature first" id="initialize-instance_method">
   
-    #<strong>initialize</strong>(name, p, g, l)  &#x21d2; <tt><span class='object_link'><a href="" title="Alimento::Alimento (class)">Alimento</a></span></tt> 
+    #<strong>initialize</strong>(name, p, g, l, med = nil)  &#x21d2; <tt><span class='object_link'><a href="" title="Alimento::Alimento (class)">Alimento</a></span></tt> 
   
 
   
@@ -395,16 +467,18 @@ alimento</p>
 27
 28
 29
-30</pre>
+30
+31</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/alimento/fuente.rb', line 25</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span><span class='id identifier rubyid_p'>p</span><span class='comma'>,</span><span class='id identifier rubyid_g'>g</span><span class='comma'>,</span><span class='id identifier rubyid_l'>l</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span><span class='id identifier rubyid_p'>p</span><span class='comma'>,</span><span class='id identifier rubyid_g'>g</span><span class='comma'>,</span><span class='id identifier rubyid_l'>l</span><span class='comma'>,</span><span class='id identifier rubyid_med'>med</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
     <span class='ivar'>@nombre</span><span class='op'>=</span><span class='id identifier rubyid_name'>name</span>
     <span class='ivar'>@proteinas</span><span class='op'>=</span><span class='id identifier rubyid_p'>p</span>
     <span class='ivar'>@glucidos</span><span class='op'>=</span><span class='id identifier rubyid_g'>g</span>
     <span class='ivar'>@lipidos</span><span class='op'>=</span><span class='id identifier rubyid_l'>l</span>
+    <span class='ivar'>@g</span><span class='op'>=</span><span class='id identifier rubyid_med'>med</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -640,6 +714,67 @@ valor energético</p>
 </div>
     
       <div class="method_details ">
+  <h3 class="signature " id="aibc-instance_method">
+  
+    #<strong>aibc</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Calcula el area bajo la curva de un alimento</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/alimento/fuente.rb', line 39</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_aibc'>aibc</span>
+    <span class='id identifier rubyid_aibc'>aibc</span><span class='op'>=</span><span class='lbracket'>[</span><span class='rbracket'>]</span>
+    <span class='ivar'>@g</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_value'>value</span><span class='op'>|</span>
+        <span class='id identifier rubyid_s'>s</span><span class='op'>=</span><span class='lbracket'>[</span><span class='rbracket'>]</span>
+        <span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_each_with_index'>each_with_index</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_val'>val</span><span class='comma'>,</span><span class='id identifier rubyid_j'>j</span><span class='op'>|</span>
+            <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_j'>j</span><span class='op'>!=</span><span class='int'>0</span><span class='rparen'>)</span>
+                <span class='id identifier rubyid_s'>s</span> <span class='op'>&lt;&lt;</span> <span class='lparen'>(</span><span class='lparen'>(</span><span class='lparen'>(</span><span class='id identifier rubyid_val'>val</span><span class='op'>-</span><span class='id identifier rubyid_value'>value</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='op'>+</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='lbracket'>[</span><span class='id identifier rubyid_j'>j</span><span class='op'>-</span><span class='int'>1</span><span class='rbracket'>]</span><span class='op'>-</span><span class='id identifier rubyid_value'>value</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='op'>*</span><span class='int'>5</span><span class='rparen'>)</span><span class='op'>/</span><span class='int'>2</span>
+            <span class='kw'>end</span>
+        <span class='kw'>end</span>
+        <span class='id identifier rubyid_aibc'>aibc</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_s'>s</span><span class='period'>.</span><span class='id identifier rubyid_reduce'>reduce</span><span class='lparen'>(</span><span class='symbol'>:+</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+    <span class='id identifier rubyid_aibc'>aibc</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
   <h3 class="signature " id="energeticValue-instance_method">
   
     #<strong>energeticValue</strong>  &#x21d2; <tt>Object</tt> 
@@ -665,15 +800,105 @@ valor energético</p>
       <pre class="lines">
 
 
-33
 34
-35</pre>
+35
+36</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/alimento/fuente.rb', line 33</span>
+      <pre class="code"><span class="info file"># File 'lib/alimento/fuente.rb', line 34</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_energeticValue'>energeticValue</span>
     <span class='id identifier rubyid_value'>value</span> <span class='op'>=</span> <span class='ivar'>@proteinas</span><span class='op'>*</span><span class='int'>4</span> <span class='op'>+</span> <span class='ivar'>@glucidos</span><span class='op'>*</span><span class='int'>4</span> <span class='op'>+</span> <span class='ivar'>@lipidos</span><span class='op'>*</span><span class='int'>9</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="indGlu-instance_method">
+  
+    #<strong>indGlu</strong>(glucosa)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Calcula el indice glucemico total de un alimento</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+59
+60
+61
+62
+63
+64
+65</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/alimento/fuente.rb', line 59</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_indGlu'>indGlu</span><span class='lparen'>(</span><span class='id identifier rubyid_glucosa'>glucosa</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_indidv'>indidv</span><span class='op'>=</span><span class='lbracket'>[</span><span class='rbracket'>]</span>
+    <span class='ivar'>@g</span><span class='period'>.</span><span class='id identifier rubyid_each_with_index'>each_with_index</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_value'>value</span><span class='comma'>,</span><span class='id identifier rubyid_index'>index</span><span class='op'>|</span>
+        <span class='id identifier rubyid_indidv'>indidv</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_indIdv'>indIdv</span><span class='lparen'>(</span><span class='id identifier rubyid_index'>index</span><span class='comma'>,</span><span class='id identifier rubyid_glucosa'>glucosa</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+    <span class='lparen'>(</span><span class='id identifier rubyid_indidv'>indidv</span><span class='period'>.</span><span class='id identifier rubyid_reduce'>reduce</span><span class='lparen'>(</span><span class='symbol'>:+</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='op'>/</span><span class='ivar'>@g</span><span class='period'>.</span><span class='id identifier rubyid_size'>size</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="indIdv-instance_method">
+  
+    #<strong>indIdv</strong>(individuo, glucosa)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Calcula el indice glucemico individual de un alimento</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+54
+55
+56</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/alimento/fuente.rb', line 54</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_indIdv'>indIdv</span><span class='lparen'>(</span><span class='id identifier rubyid_individuo'>individuo</span><span class='comma'>,</span><span class='id identifier rubyid_glucosa'>glucosa</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_indidv'>indidv</span><span class='op'>=</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_aibc'>aibc</span><span class='lbracket'>[</span><span class='id identifier rubyid_individuo'>individuo</span><span class='rbracket'>]</span><span class='op'>*</span><span class='int'>100</span><span class='op'>/</span><span class='id identifier rubyid_glucosa'>glucosa</span><span class='period'>.</span><span class='id identifier rubyid_aibc'>aibc</span><span class='lbracket'>[</span><span class='id identifier rubyid_individuo'>individuo</span><span class='rbracket'>]</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -706,15 +931,15 @@ valor energético</p>
       <pre class="lines">
 
 
-38
-39
-40</pre>
+68
+69
+70</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/alimento/fuente.rb', line 38</span>
+      <pre class="code"><span class="info file"># File 'lib/alimento/fuente.rb', line 68</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_s'>to_s</span>
-    <span class='id identifier rubyid_cadena'>cadena</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Name: </span><span class='embexpr_beg'>#{</span><span class='ivar'>@nombre</span><span class='embexpr_end'>}</span><span class='tstring_content'> --&gt; [Proteins , Glucids , Lipids]: [</span><span class='embexpr_beg'>#{</span><span class='ivar'>@proteinas</span><span class='embexpr_end'>}</span><span class='tstring_content'> , </span><span class='embexpr_beg'>#{</span><span class='ivar'>@glucidos</span><span class='embexpr_end'>}</span><span class='tstring_content'> , </span><span class='embexpr_beg'>#{</span><span class='ivar'>@lipidos</span><span class='embexpr_end'>}</span><span class='tstring_content'>]</span><span class='tstring_end'>&quot;</span></span>
+    <span class='id identifier rubyid_cadena'>cadena</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>[</span><span class='embexpr_beg'>#{</span><span class='ivar'>@nombre</span><span class='embexpr_end'>}</span><span class='tstring_content'>,</span><span class='embexpr_beg'>#{</span><span class='ivar'>@proteinas</span><span class='embexpr_end'>}</span><span class='tstring_content'>,</span><span class='embexpr_beg'>#{</span><span class='ivar'>@glucidos</span><span class='embexpr_end'>}</span><span class='tstring_content'>,</span><span class='embexpr_beg'>#{</span><span class='ivar'>@lipidos</span><span class='embexpr_end'>}</span><span class='tstring_content'>]</span><span class='tstring_end'>&quot;</span></span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -726,7 +951,7 @@ valor energético</p>
 </div>
 
       <div id="footer">
-  Generated on Thu Nov 16 12:16:56 2017 by
+  Generated on Tue Dec 12 20:43:00 2017 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.9 (ruby-2.4.2).
 </div>

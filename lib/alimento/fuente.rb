@@ -35,6 +35,7 @@ module Alimento
             value = @proteinas*4 + @glucidos*4 + @lipidos*9
         end
         
+        # Calcula el area bajo la curva de un alimento
         def aibc
             aibc=[]
             @g.each do |value|
@@ -49,10 +50,12 @@ module Alimento
             aibc
         end
 
+        # Calcula el indice glucemico individual de un alimento
         def indIdv(individuo,glucosa)
             indidv=self.aibc[individuo]*100/glucosa.aibc[individuo]
         end
 
+        # Calcula el indice glucemico total de un alimento
         def indGlu(glucosa)
             indidv=[]
             @g.each_with_index do |value,index|
@@ -143,8 +146,11 @@ module Alimento
         end
     end
 
+    #Clase que permite representar una receta
     class Plato
         attr_reader :vegetales, :frutas, :granos, :proteinas, :aceites
+        # Se definen los valores de conversion en @tabla y la lista de alimentos disponibles en @listaalimentos
+        # junto con el nombre de la receta en @name
         def initialize(name,&block)
             @name=name
             @vegetales=[]
@@ -181,6 +187,7 @@ module Alimento
             end
         end
 
+        #Metodo que inserta un vegetal al plato
         def vegetal(name,options = {})
             vegetal=@listaalimentos.select do |alimento|
                 alimento.nombre.downcase == name.downcase
@@ -194,7 +201,8 @@ module Alimento
 
             @vegetales<<vegetal
         end
-
+        
+        #Metodo que inserta una fruta al plato
         def fruta(name,options = {})
             fruta=@listaalimentos.select do |alimento|
                 alimento.nombre.downcase == name.downcase
@@ -208,6 +216,8 @@ module Alimento
 
             @frutas << fruta
         end
+
+        #Metodo que inserta un cereal al plato
         def cereal(name,options = {})
             cereal=@listaalimentos.select do |alimento|
                 alimento.nombre.downcase == name.downcase
@@ -221,6 +231,8 @@ module Alimento
 
             @granos << cereal
         end
+        
+        #Metodo que inserta proteinas al plato
         def proteina(name,options = {})
             proteinas=@listaalimentos.select do |alimento|
                 alimento.nombre.downcase == name.downcase
@@ -234,6 +246,8 @@ module Alimento
 
             @proteinas << proteinas
         end
+
+        #Metodo que inserta aceite al plato
         def aceite(name,options = {})
             aceite=@listaalimentos.select do |alimento|
                 alimento.nombre.downcase == name.downcase
@@ -248,6 +262,7 @@ module Alimento
             @aceites << aceite
         end
 
+        #Metodo que transforma el objeto plato en una tabla representada en un string
         def to_s
             output = @name
             output << "\n#{'='*@name.size}\n\n"
@@ -348,6 +363,7 @@ module Lista
             end
         end
 
+        #Metodo de ordenacion con bucles for
         def sortWFor
             arr=[]
             current=@head
@@ -368,6 +384,7 @@ module Lista
             arr
         end
 
+        #Metodo de ordenacion con metodos each
         def sortWEach 
             arr=[]
             current=@head
