@@ -336,7 +336,7 @@ end
 
 RSpec.describe Alimento::Plato do
     before :all do
-        @plato=Alimento::Plato.new("Lentejas") do
+        @plato=Alimento::Plato.new("Lentejas con arroz, salsa de tomate, huevo y platano a la plancha") do
             vegetal     "Tomate"    , :porcion => "2 cups"
             fruta       "Platano"   , :porcion => "20 grams"
             cereal      "arroz"     , :porcion => "1 glass"
@@ -360,6 +360,9 @@ RSpec.describe Alimento::Plato do
     end
     it "# add aceite" do
         expect(@plato.aceites[0]).to eq([Alimento::Grasos.new("aceite de oliva", 0,0.2,99.6),1.5])
+    end
+    it "# demostracion to_s" do
+        puts @plato
     end
 end
 

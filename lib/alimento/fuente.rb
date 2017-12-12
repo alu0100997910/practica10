@@ -247,6 +247,25 @@ module Alimento
 
             @aceites << aceite
         end
+
+        def to_s
+            output = @name
+            output << "\n#{'='*@name.size}\n\n"
+            output << "Composicion Nutricional:\n\n"
+            output << "%-20s %12s %12s %12s %20s\n" % ["NOMBRE","GLUCIDOS","PROTEINAS","LIPIDOS","VALOR ENERGETICO"]
+            @vegetales.each{ |i| output << "%-20s %12.1f %12.1f %12.1f %20.1f\n" % [i[0].nombre,i[0].glucidos,i[0].proteinas,i[0].lipidos,i[0].energeticValue*i[1]] }
+            @granos.each{ |i| output << "%-20s %12.1f %12.1f %12.1f %20.1f\n" % [i[0].nombre,i[0].glucidos,i[0].proteinas,i[0].lipidos,i[0].energeticValue*i[1]] }
+            @frutas.each{ |i| output <<"%-20s %12.1f %12.1f %12.1f %20.1f\n" % [i[0].nombre,i[0].glucidos,i[0].proteinas,i[0].lipidos,i[0].energeticValue*i[1]] }
+            @proteinas.each{ |i| output << "%-20s %12.1f %12.1f %12.1f %20.1f\n" % [i[0].nombre,i[0].glucidos,i[0].proteinas,i[0].lipidos,i[0].energeticValue*i[1]] }
+            @aceites.each{ |i| output << "%-20s %12.1f %12.1f %12.1f %20.1f\n" % [i[0].nombre,i[0].glucidos,i[0].proteinas,i[0].lipidos,i[0].energeticValue*i[1]] }
+            total=0
+            @vegetales.each{ |i| total += i[0].energeticValue*i[1] }
+            @granos.each{ |i| total += i[0].energeticValue*i[1] }
+            @frutas.each{ |i| total += i[0].energeticValue*i[1] }
+            @proteinas.each{ |i| total += i[0].energeticValue*i[1] }
+            @aceites.each{ |i| total += i[0].energeticValue*i[1] }
+            output << "\nTOTAL: %73.2f" % [total] 
+        end
     end
 
 end
